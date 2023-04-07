@@ -4,7 +4,24 @@ import fs from 'fs';
 import path from 'path';
 
 dotenv.config();
-
+console.log(
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	process.env.BACKEND,
+	process.env.S3_ACCESS_KEY,
+	process.env.S3_SECRET_KEY,
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa',
+	'aaaaaaaa'
+);
 const upload = async () => {
 	const s3 = new AWS.S3({
 		accessKeyId: process.env.S3_ACCESS_KEY,
