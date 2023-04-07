@@ -17,17 +17,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm i
-      - run: npm run build
         env:
           WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
-          BACKEND: "https://us-central1-dumbo-3d6e7.cloudfunctions.net/app"
+          BACKEND: https://us-central1-dumbo-3d6e7.cloudfunctions.net/app
           S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
           S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
+      - run: npm run build
       - run: renderID=${{inputs.renderId}} npx ts-node src/upload-and-notify.ts
-        env:
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
-          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
       - uses: actions/upload-artifact@v2
         with:
           name: out.mp4
