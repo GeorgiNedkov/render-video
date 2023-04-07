@@ -9,7 +9,7 @@ name: Render video
 jobs:
   render:
     name: Render video
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: SpicyPizza/create-envfile@v1.3
         with:
