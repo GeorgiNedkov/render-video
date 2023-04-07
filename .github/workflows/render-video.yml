@@ -4,7 +4,7 @@ on:
       renderId:
         description: "Which message ids should it be?"
         required: true
-        default: "6408d8260ea6afe7fa234221"
+        default: "clg2m4t7b00b7bu9b0einnxnm"
 name: Render video
 jobs:
   render:
