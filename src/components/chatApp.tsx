@@ -210,7 +210,6 @@ const Date = ({date}: {date: string}) => {
 };
 
 const MessagesBox = ({msgs}: {msgs: MSG[]}) => {
-	console.log(msgs);
 	let frames = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	let typeBoxes = 0;

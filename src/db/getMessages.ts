@@ -1,9 +1,9 @@
-import {MSG, optionalMSG} from '../types/msg';
+import type {MSG} from '../types/msg';
 
-export async function getMessages(msgID: string): Promise<MSG[]> {
+export async function getMessages(renderID: string): Promise<MSG[]> {
 	await Promise.resolve();
 
-	const renderID = 'clg2m4t7b00b7bu9b0einnxnm';
+	// Const renderID = 'clg2m4t7b00b7bu9b0einnxnm';
 	const renderPath = 'renders';
 	const renderLink = `${process.env.BACKEND}/${renderPath}/${renderID}`;
 	// Const id = 'clfvosjth0001buwcv1r30fy8';

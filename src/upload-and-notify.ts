@@ -32,9 +32,7 @@ const upload = async () => {
 		}
 	);
 
-	console.log(result);
-
-	const a = await fetch(`${process.env.BACKEND}/notify`, {
+	await fetch(`${process.env.BACKEND}/notify`, {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -45,8 +43,6 @@ const upload = async () => {
 			renderId: `${process.env.renderID}`,
 		}),
 	});
-
-	console.log(a);
 };
 
 upload();
