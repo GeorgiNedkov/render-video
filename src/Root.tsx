@@ -15,7 +15,9 @@ export const RemotionRoot: React.FC = () => {
 
 	const [duration, setDuration] = useState<number>(300);
 	const renderID =
-		(props?.renderId as string | undefined) ?? '6408d8260ea6afe7fa234221';
+		typeof props === 'string'
+			? props
+			: (props?.renderId as string | undefined) ?? '6408d8260ea6afe7fa234221';
 
 	useEffect(() => {
 		getMessages(renderID).then((messages) => {
