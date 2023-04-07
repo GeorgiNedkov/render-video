@@ -17,9 +17,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm i
-      - run: npm run build -- --props="$WORKFLOW_INPUT"
+      - run: npm run build
         env:
           WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
+          BACKEND: ${{ secrets.BACKEND }}
+          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
+          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
       - run: renderID=${{inputs.renderId}} npx ts-node src/upload-and-notify.ts
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
