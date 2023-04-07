@@ -9,20 +9,19 @@ name: Render video
 jobs:
   render:
     name: Render video
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - uses: SpicyPizza/create-envfile@v1.3
-        with:
-          BACKEND: https://us-central1-dumbo-3d6e7.cloudfunctions.net/app
-          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
-          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
       - uses: FedericoCarboni/setup-ffmpeg@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm i
-      - run: npm run build
+      - run: BACKEND=https://us-central1-dumbo-3d6e7.cloudfunctions.net/app npm run build
+        env:
+          BACKEND: https://us-central1-dumbo-3d6e7.cloudfunctions.net/app
+          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
+          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
       - run: renderID=${{inputs.renderId}} npx ts-node src/upload-and-notify.ts
       - uses: actions/upload-artifact@v2
         with:
