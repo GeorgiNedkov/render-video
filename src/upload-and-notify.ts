@@ -18,7 +18,7 @@ const upload = async () => {
 				{
 					Bucket: 'videos-hapnap.net',
 					Key: `video-${Date.now()}.mp4`,
-					Body: fs.readFileSync(path.join(__dirname, '..', 'video.mp4')),
+					Body: fs.readFileSync(path.join(__dirname, '..', 'out.mp4')),
 					ACL: 'public-read',
 				},
 				(err, data) => {
