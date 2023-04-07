@@ -17,7 +17,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm i
-      - run: npm run build -- --props=="$WORKFLOW_INPUT"
+      - run: npm run build -- --props="$WORKFLOW_INPUT"
         env:
           WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
       - run: renderID=${{inputs.renderId}} npx ts-node src/upload-and-notify.ts
