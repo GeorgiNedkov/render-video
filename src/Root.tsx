@@ -19,8 +19,13 @@ export const RemotionRoot: React.FC = () => {
 			? props
 			: (props?.renderId as string | undefined) ?? 'clg2m4t7b00b7bu9b0einnxnm';
 
+	const backendURL =
+		props.backend ??
+		process.env.BACKEND ??
+		'https://us-central1-dumbo-3d6e7.cloudfunctions.net/app';
+
 	useEffect(() => {
-		getMessages(renderID).then((messages) => {
+		getMessages(renderID, backendURL).then((messages) => {
 			if (messages) {
 				// Const m = msgTransformer(msgs);
 				setVideoInfo(messages);
