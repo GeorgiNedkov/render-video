@@ -7,7 +7,7 @@
 	],
 	"scripts": {
 		"start": "remotion preview",
-		"build": "remotion render src/index.tsx MyComp out.mp4",
+		"build": "remotion render MyComp out.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc",
 		"upload": "npx ts-node ./src/upload-and-notify.ts"
