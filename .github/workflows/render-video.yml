@@ -1,10 +1,10 @@
 on:
   workflow_dispatch:
     inputs:
-      messageIds:
+      renderId:
         description: "Which message ids should it be?"
         required: true
-        default: "clg2m4t7b00b7bu9b0einnxnm"
+        default: "6408d8260ea6afe7fa234221"
 name: Render video
 jobs:
   render:
@@ -20,7 +20,7 @@ jobs:
       - run: npm run build -- --props="$WORKFLOW_INPUT"
         env:
           WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
-      - run: renderID=$WORKFLOW_INPUT npx ts-node src/upload-and-notify.ts
+      - run: renderID="$WORKFLOW_INPUT.renderId". npx ts-node src/upload-and-notify.ts
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
