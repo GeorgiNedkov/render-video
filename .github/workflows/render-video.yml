@@ -9,7 +9,7 @@ name: Render video
 jobs:
   render:
     name: Render video
-    runs-on: ubuntu-22.04
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
